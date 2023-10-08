@@ -11,7 +11,12 @@ import (
 
 func main() {
 
-	fmt.Println("Hello World!!!")
+	var books []Book
+
+	books = append(books, sampleBooks...)
+	for _, book := range books {
+		fmt.Printf("book:: %+v\n", book)
+	}
 
 	r := mux.NewRouter()
 
