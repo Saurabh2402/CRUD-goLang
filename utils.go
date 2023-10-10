@@ -18,3 +18,16 @@ func GetEnvVar(key string) string {
 
 	return os.Getenv(key)
 }
+
+func findBookIndexById(id int) int {
+
+	for ind, book := range books {
+		if id == book.Id {
+			fmt.Println("Book Found!")
+			return ind
+		}
+	}
+	fmt.Println("Book Not Found, returning -1")
+
+	return -1
+}
