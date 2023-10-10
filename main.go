@@ -2,21 +2,20 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
 
+var books []Book
+
 func main() {
 
-	var books []Book
-
-	books = append(books, sampleBooks...)
-	for _, book := range books {
-		fmt.Printf("book:: %+v\n", book)
-	}
+	// books = append(books, sampleBooks...)
+	// for _, book := range books {
+	// 	fmt.Printf("book:: %+v\n", book)
+	// }
 
 	r := mux.NewRouter()
 
@@ -29,6 +28,13 @@ func main() {
 
 	godotenv.Load()
 	port := GetEnvVar("PORT")
-	log.Fatal(http.ListenAndServe(port, nil))
 
+	fmt.Printf("Server starting at:  http://localhost:%s\n\n", port)
+
+	err := http.ListenAndServe(port, nil)
+	if err != nil {
+		fmt.Println("Server Failed to start, error:", err)
+	}
+	// Code below this point will continue executing
+	fmt.Println("Server started on", port)
 }
