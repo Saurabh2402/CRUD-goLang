@@ -1,18 +1,18 @@
 package main
 
 type Author struct {
-	FirstName string
-	LastName  string
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
 }
 
 type Publisher struct {
-	Name string
-	Year int
+	Name string `json:"name"`
+	Year int    `json:"year"`
 }
 
 type Book struct {
-	Id             int    `json:"id"`
-	Name           string `json:"name"`
-	Authors        []Author
-	PublishingInfo Publisher
+	Id             int       `json:"id"`
+	Name           string    `json:"name"`
+	Authors        []Author  `json:"authors"`
+	PublishingInfo Publisher `json:"publisher"`
 }
