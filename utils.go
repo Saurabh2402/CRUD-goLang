@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
+	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
 
@@ -30,4 +32,12 @@ func findBookIndexById(id int) int {
 	fmt.Println("Book Not Found, returning -1")
 
 	return -1
+}
+
+func getValueFromPathParams(r *http.Request, key string) string {
+	vars := mux.Vars(r)
+	value := vars[key]
+	fmt.Println("key:", key)
+	fmt.Println("value:", value)
+	return value
 }
